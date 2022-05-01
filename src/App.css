@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+*::before, *::after{
+  box-sizing: border-box;
+}
+body {
+  /* background: linear-gradient (to right, #C8d2fc, #facace, #feffc7) */ 
+  background-color: rgb(138, 145, 145);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+  height: 100vh;
+  width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.calculator-grid {
+  display: grid;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-content: center; 
+  min-height: 80vh; /* altura minima */
+  grid-template-columns: repeat(4, 80px); /* formato de columnas, primero la cantidad dsps el tamaño */
+  grid-template-rows: minmax(80px, auto) repeat(5, 80px); /* lo mismo que las columnas pero para las filas */
 }
 
-.App-link {
-  color: #61dafb;
+.calculator-grid > button {
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  border: 1px solid white;
+  outline: none;
+  background-color: #fafafa75;
+  margin: 3px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.calculator-grid > button:hover {
+  background-color: white;
+}
+
+.span-two {
+  grid-column: span 2;
+}
+
+.output {
+  grid-column: 1 / -1; /* con esto le decimos que vaya de la columna 1 a la -1 */
+  margin-bottom: .5rem;
+  background-color: white;
+  display: flex; /*  esto hace que el contendido del output este horizontal */
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column; /* ESTO PONE A AMBOS VALORES EN COLUMNAS  */
+  border-radius: 1rem;
+  padding: 10px;
+  word-wrap: break-word; /* esto evita que el texto salga de los limites */
+  word-break: break-all; /* loq ue hace es que se agrande el display a medida que se agranda lo que hay adentro */
+}
+
+.output .previous-operand {
+  color: #00000090;
+  font-size: 1.5rem;
+}
+
+.output .current-operand {
+  color: #f78e79;
+  font-size: 2.5rem;
 }
